@@ -2,16 +2,21 @@
   (:require [goog.dom :as gdom]
             [goog.dom.classes :as gclasses]))
 
+
+(defn- collection-to-vec [coll]
+  (map (fn [i] (.item coll i)) (range 0 (.-length coll))))
+
 ;; selectors
 
 (defn get-by-id [id]
   (.getElementById js/document (name id)))
 
 (defn get-by-class [klass container]
-  (gdom/getElementsByClass (name klass) container))
+  (collection-to-vec (gdom/getElementsByClass (name klass) container)))
 
 (defn get-by-tag-and-class [tag klass container]
-  (gdom/getElementsByTagNameAndClass (name tag) (name klass) container))
+  (collection-to-vec
+    (gdom/getElementsByTagNameAndClass (name tag) (name klass) container)))
 
 (comment
   (dom/get-by-class :child (dom/get-by-id :container))
@@ -20,7 +25,7 @@
 ;; related
 
 (defn get-children [el]
-  (gdom/getChildren el))
+  (collection-to-vec (gdom/getChildren el)))
 
 (defn get-next [el]
   (gdom/getNextNode el))
