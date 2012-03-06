@@ -10,12 +10,12 @@
 (defn get-by-class [klass container]
   (gdom/getElementsByClass (name klass) container))
 
-(defn get [tag klass container]
+(defn get-by-tag-and-class [tag klass container]
   (gdom/getElementsByTagNameAndClass (name tag) (name klass) container))
 
 (comment
   (dom/get-by-class :child (dom/get-by-id :container))
-  (dom/get :div :child (dom/get-by-id :container)))
+  (dom/get-by-tag-and-class :div :child (dom/get-by-id :container)))
 
 ;; related
 
