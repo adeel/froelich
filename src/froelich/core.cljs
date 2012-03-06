@@ -39,16 +39,16 @@
 ;; classes
 
 (defn get-classes [el]
-  (gdom.classes/get el))
+  (map keyword (gdom.classes/get el)))
 
 (defn has-class? [el klass]
-  (gdom/classes/has el klass))
+  (gdom/classes/has el (name klass)))
 
 (defn add-class! [el & classes]
-  (apply (partial gdom.classes/add el) classes))
+  (apply (partial gdom.classes/add el) (map name classes)))
 
 (defn remove-class! [el & classes]
-  (apply (partial gdom.classes/remove el) classes))
+  (apply (partial gdom.classes/remove el) (map name classes)))
 
 (defn toggle-class! [el klass]
-  (gdom.classes/toggle el klass))
+  (gdom.classes/toggle el (name klass)))
