@@ -1,7 +1,7 @@
 (ns froelich.core
-  (:require goog.dom
-            goog.dom.classes
-            goog.dom.query))
+  (:require [goog.dom :as gdom]
+            [goog.dom.classes :as gclasses]
+            [goog.dom.query :as gquery]))
 
 ;; selectors
 
@@ -9,13 +9,13 @@
   (.getElementById js/document (name id)))
 
 (defn get-by-class [klass container]
-  (goog.dom/getElementsByClass (name klass) container))
+  (gdom/getElementsByClass (name klass) container))
 
 (defn get [tag klass container]
-  (goog.dom/getElementsByTagNameAndClass (name tag) (name klass) container))
+  (gdom/getElementsByTagNameAndClass (name tag) (name klass) container))
 
 (defn query [selector container]
-  (goog.dom.query selector container))
+  (gdom.query selector container))
 
 (comment
   (dom/get-by-class :child (dom/get-by-id :container))
@@ -25,35 +25,35 @@
 ;; related
 
 (defn get-children [el]
-  (goog.dom/getChildren el))
+  (gdom/getChildren el))
 
 (defn get-next [el]
-  (goog.dom/getNextNode el))
+  (gdom/getNextNode el))
 
 (defn get-previous [el]
-  (goog.dom/getPreviousNode el))
+  (gdom/getPreviousNode el))
 
 ;; manipulation
 
 (defn append! [el container]
-  (goog.dom/appendChild container el))
+  (gdom/appendChild container el))
 
 (defn remove! [el]
-  (goog.dom/removeNode el))
+  (gdom/removeNode el))
 
 ;; classes
 
 (defn get-classes [el]
-  (goog.dom.classes/get el))
+  (gdom.classes/get el))
 
 (defn has-class? [el klass]
-  (goog.dom/classes/has el klass))
+  (gdom/classes/has el klass))
 
 (defn add-class! [el & classes]
-  (apply (partial goog.dom.classes/add el) classes))
+  (apply (partial gdom.classes/add el) classes))
 
 (defn remove-class! [el & classes]
-  (apply (partial goog.dom.classes/remove el) classes))
+  (apply (partial gdom.classes/remove el) classes))
 
 (defn toggle-class! [el klass]
-  (goog.dom.classes/toggle el klass))
+  (gdom.classes/toggle el klass))
