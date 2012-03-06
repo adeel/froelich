@@ -1,0 +1,18 @@
+# froelich
+
+A library for DOM manipulation in ClojureScript.
+
+## Usage
+
+    (ns froelich.sample
+      (:require [froelich.core :as dom]))
+
+    (dom/get-by-class :child (dom/get-by-id :container))
+    (dom/get :div :child (dom/get-by-id :container))
+    (dom/query "div.child" (dom/get-by-id :container))
+
+## License
+
+Copyright (C) 2012 Adeel Ahmad Khan
+
+Distributed under the Eclipse Public License, the same as Clojure.
