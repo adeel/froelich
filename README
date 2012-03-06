@@ -9,7 +9,6 @@ A library for DOM manipulation in ClojureScript.
 
     (dom/get-by-class :child (dom/get-by-id :container))
     (dom/get :div :child (dom/get-by-id :container))
-    (dom/query "div.child" (dom/get-by-id :container))
 
 ## License
 

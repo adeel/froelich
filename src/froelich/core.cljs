@@ -1,7 +1,6 @@
 (ns froelich.core
   (:require [goog.dom :as gdom]
-            [goog.dom.classes :as gclasses]
-            [goog.dom.query :as gquery]))
+            [goog.dom.classes :as gclasses]))
 
 ;; selectors
 
@@ -14,13 +13,9 @@
 (defn get [tag klass container]
   (gdom/getElementsByTagNameAndClass (name tag) (name klass) container))
 
-(defn query [selector container]
-  (gdom.query selector container))
-
 (comment
   (dom/get-by-class :child (dom/get-by-id :container))
-  (dom/get :div :child (dom/get-by-id :container))
-  (dom/query "div.child" (dom/get-by-id :container)))
+  (dom/get :div :child (dom/get-by-id :container)))
 
 ;; related
 
